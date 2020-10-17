@@ -4,7 +4,7 @@ import './NavBar.css'
 export default function NavBar() {
 
     return (
-        <div>
+        <div >
             <Navbar bg="light" expand="lg">
                 <Navbar.Brand href="/">Kware-Blog</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -23,10 +23,8 @@ export default function NavBar() {
                         </NavDropdown>
                         <Nav.Link href="/contact">Contact Us</Nav.Link>
                     </Nav>
-                    <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
+                    <Button variant="outline-success" itemID="one">Get Started </Button>
+
                 </Navbar.Collapse>
             </Navbar>
         </div>

@@ -7,7 +7,7 @@ const ArticelCards = (props) => {
         <div className="container">
             <CardDeck>
                 <Card >
-                    <Card.Img  variant="top" src="/images/strapi.png" width="200" height="300" />
+                    <Card.Img variant="top" src="/images/strapi.png" />
                     <Card.Body>
                         <Card.Title>Card title</Card.Title>
                         <Card.Text>
@@ -20,7 +20,7 @@ const ArticelCards = (props) => {
                     </Card.Footer>
                 </Card>
                 <Card>
-                    <Card.Img variant="top" src="/images/strapi.png" width="200" height="300" />
+                    <Card.Img variant="top" src="/images/strapi.png" />
                     <Card.Body>
                         <Card.Title>Card title</Card.Title>
                         <Card.Text>
@@ -33,7 +33,7 @@ const ArticelCards = (props) => {
                     </Card.Footer>
                 </Card>
                 <Card>
-                    <Card.Img variant="top" src="/images/strapi.png" width="200" height="300" />
+                    <Card.Img variant="top" src="/images/strapi.png" />
                     <Card.Body>
                         <Card.Title>Card title</Card.Title>
                         <Card.Text>
