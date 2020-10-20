@@ -1,55 +1,49 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, CardDeck } from 'react-bootstrap'
-import './ArticelCards.css'
+import { Card, CardDeck } from 'react-bootstrap';
+import './ArticelCards.css';
+
 const ArticelCards = (props) => {
+    const { blog } = props;
+    const URL = "54.220.211.123:2020";
+
     return (
-        <div className="container">
-            <CardDeck>
-                <Card >
-                    <Card.Img variant="top" src="/images/strapi.png" />
-                    <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
-      </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </Card.Footer>
-                </Card>
-                <Card>
-                    <Card.Img variant="top" src="/images/strapi.png" />
-                    <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This card has supporting text below as a natural lead-in to additional
-        content.{' '}
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </Card.Footer>
-                </Card>
-                <Card>
-                    <Card.Img variant="top" src="/images/strapi.png" />
-                    <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This card has even longer content than the first to
-                            show that equal height action.
-      </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </Card.Footer>
-                </Card>
-            </CardDeck>
+        <div className="row row-cols-1 row-cols-md-3">
+            {
+                blog.map(articel => articel.images.map(img =>
+
+                    <div key={articel.id} >
+                        <div className="col mb-4" >
+                            <Card.Img variant="top" src={URL.concat(img.url)} />
+                            {console.log(".....url.....", URL.concat(img.url))}
+                            
+                            <Card.Body>
+                                <Card.Title>{articel.title}</Card.Title>
+                                <Card.Text>
+                                    {articel.content}
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Footer>
+                                <small className="text-muted">Last updated 3 mins ago</small>
+                            </Card.Footer>
+                        </div>
+                    </div>
+                )
+                )
+            }
         </div>
 
     );
+
 };
 
 export default ArticelCards;
+
+
+
+
+
+
+
+
+
