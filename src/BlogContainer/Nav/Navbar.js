@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Form, Button, FormControl, Navbar, NavDropdown } from 'react-bootstrap'
+import { Nav, Button, Navbar, NavDropdown } from 'react-bootstrap'
 import './NavBar.css'
 export default function NavBar() {
 
@@ -23,7 +23,7 @@ export default function NavBar() {
                         </NavDropdown>
                         <Nav.Link href="/contact">Contact Us</Nav.Link>
                     </Nav>
-                    <Button variant="outline-success" itemID="one">Get Started </Button>
+                    <Button  variant="outline-success" href="/create">Create Articel </Button>
 
                 </Navbar.Collapse>
             </Navbar>

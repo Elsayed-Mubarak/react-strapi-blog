@@ -4,7 +4,7 @@ import Home from '../Home/Navbar';
 import Galary from '../Galary/galary'
 import Channels from '../Channels/channel'
 import ContactUs from '../ContactUs/contact'
-
+import Articel from '../SingleArticel/Articel'
 
 export default function Routes() {
 
@@ -17,6 +17,7 @@ export default function Routes() {
                         <Route path="/galary" component={Galary} />
                         <Route path="/channels" component={Channels} />
                         <Route path="/contact-us" component={ContactUs} />
+                        <Route path="/articel/:id" component={Articel} />
                     </Switch>
                 </div>
             </div>

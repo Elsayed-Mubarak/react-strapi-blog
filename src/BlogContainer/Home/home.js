@@ -5,13 +5,12 @@ import Search from '../SearchBar/Search'
 
 export default function Home() {
 
-    const Url = 'http://54.220.211.123:2020/articles';
+    const URL = `http://54.220.211.123:2020`;
 
     const [articels, setArticels] = useState([]);
 
-
     const getArticel = () => {
-        fetch(Url)
+        fetch(`${URL}/articles`)
             .then(response => response.json())
             .then(articels => setArticels(articels))
             .catch(e => console.log(e));
@@ -19,18 +18,15 @@ export default function Home() {
 
     useEffect(() => {
         getArticel()
-
     },[]);
-    console.log("...article...", articels);
+    console.log("...article. home..", articels);
 
     return (
         <div>
             <Navbar />
             <Search />
-            <div className="container">
-            <ArticelCards blog={articels} />
-            </div>
-            
+            <ArticelCards blog={articels} URL={URL} />
+
         </div >
 
     );

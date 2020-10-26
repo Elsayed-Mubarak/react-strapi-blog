@@ -7,7 +7,8 @@ import Home from './BlogContainer/Home/home';
 import Galary from './BlogContainer/Galary/galary'
 import Channels from './BlogContainer/Channels/channel'
 import ContactUs from './BlogContainer/ContactUs/contact'
-
+import Articel from './BlogContainer/SingleArticel/Articel'
+import CreateArticel from './BlogContainer/CreateArticel/index'
 
 function AppTest() {
     return (
@@ -18,6 +19,8 @@ function AppTest() {
                     <Route path="/galary" component={Galary} />
                     <Route path="/channels" component={Channels} />
                     <Route path="/contact" component={ContactUs} />
+                    <Route path="/articel/:id" component={Articel} />
+                    <Route path="/create" component={CreateArticel} />
                 </Switch>
             </div>
 
