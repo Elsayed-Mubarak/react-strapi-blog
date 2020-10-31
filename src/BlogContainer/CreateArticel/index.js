@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'

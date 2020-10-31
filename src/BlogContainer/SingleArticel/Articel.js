@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Articel.css';
 import Navbar from '../Nav/Navbar'
-import { Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { Card } from 'react-bootstrap';
 import './Articel.css';
 import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
 
 const Articel = (props) => {
+    //  const URL = `http://54.220.211.123:2020`;
+    const URL = `http://localhost:1337`;
 
-    const URL = `http://54.220.211.123:2020`;
     const [articel, setArticel] = useState({});
 
 

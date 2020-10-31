@@ -1,9 +1,8 @@
 import React from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './AppTest.css';
 import { Switch, Route } from "react-router-dom";
 import Home from './BlogContainer/Home/home';
-
+import BaseLine from '@material-ui/core/CssBaseline'
 import Galary from './BlogContainer/Galary/galary'
 import Channels from './BlogContainer/Channels/channel'
 import ContactUs from './BlogContainer/ContactUs/contact'
@@ -13,6 +12,7 @@ import CreateArticel from './BlogContainer/CreateArticel/index'
 function AppTest() {
     return (
         <div className="AppTest">
+            <BaseLine />
             <div className="Nav-Bar">
                 <Switch>
                     <Route exact path='/' component={Home} />
