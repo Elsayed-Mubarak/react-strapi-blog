@@ -1,21 +1,14 @@
-# pull official base image
-FROM node:13.12.0-alpine
+#step 1
+FROM node:13.12.0-alpine as build-step
 
-# set working directory
-WORKDIR /usr/sayedmubarak/react/newblog
-
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
-
-# install app dependencies
-COPY package.json ./
-COPY ./yarn.lock ./
+RUN mkdir /app
+WORKDIR /app
+COPY package.json yarn.lock /app/
 
 RUN yarn install
+COPY . /app
+RUN yarn run build
 
-# add app
-COPY . ./
-EXPOSE 3000
-
-# start app
-CMD ["yarn", "start"]  
+# step 2
+FROM nginx:1.17.1-alpine
+COPY --from=build-step /app/build /usr/share/nginx/html
