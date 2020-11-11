@@ -5,12 +5,13 @@ import Search from '../SearchBar/Search'
 import axios from 'axios';
 export default function Home() {
 
-    //const URL = `http://54.220.211.123:2020`;
-    const URL = `http://localhost:1337`;
+    const URL = `http://54.220.211.123:2020`;
+   // const URL = `http://localhost:1337`;
 
     const [articels, setArticels] = useState([]);
     const [category, setcategory] = useState([]);
     const [currntSelectedCategory, setCurrntSelectedCategory] = useState('All');
+    const [searchValue, setSearchValue] = useState();
 
     const getArticel = async () => {
         const data = await fetch(`${URL}/articles`)
@@ -20,6 +21,27 @@ export default function Home() {
             .catch(e => console.log(e));
     }
 
+    const searchOnElastic = async (itm) => {
+        try {
+            const options = { headers: { 'Access-Control-Allow-Origin': true } };
+            JSON.stringify(itm);
+            let { data } = await axios.post(`http://localhost:9200/_search`, {
+                "query": {
+                    "query_string": {
+                        "query": `${itm}`
+                    }
+                }
+            }, options
+            );
+            console.log(".....elasticsrch.....", data);
+
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
+
     const filterArticleByCategoryName = async (categoryName) => {
         try {
             setCurrntSelectedCategory(`${categoryName}`);
@@ -28,26 +50,9 @@ export default function Home() {
             } else {
 
 
-
-                var { data } = await axios.post(`http://localhost:1337/categoryName`, { name: `${categoryName}` });
+                let { data } = await axios.post(`${URL}/categoryName`, { name: `${categoryName}` });
                 console.log(data);
-                setcategory(data)
-                // await fetch(`${URL}/categoryName`,
-                //     {
-                //         method: 'POST',
-                //         body: JSON.stringify({ name: `${categoryName}` }),
-                //         headers: new Headers()
-                //     })
-                //     .then(response => {
-                //         console.log("...............response111.......", response);
-                //         response.json().then((article) => {
-                //             console.log("...............response222.......", article);
-                //             setcategory(article)
-                //         })
-                //     })
-                //     .catch(e => console.log("error ... ", e));
-
-
+                setcategory(data);
             }
         } catch (e) {
             console.log(e);
@@ -67,7 +72,7 @@ export default function Home() {
     return (
         <div>
             <Navbar />
-            <Search URL={URL} filterArticleByCategoryName={filterArticleByCategoryName} category={category} />
+            <Search URL={URL} filterArticleByCategoryName={filterArticleByCategoryName} category={category} searchOnElastic={searchOnElastic} />
             <ArticelCards blog={articels} URL={URL} category={category} categoryName={currntSelectedCategory} />
 
         </div >

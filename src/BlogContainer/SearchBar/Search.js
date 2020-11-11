@@ -5,13 +5,21 @@ import './Search.css'
 import ArticelCards from '../Cards/ArticelCards'
 
 
-const SearchBar = ({ filterArticleByCategoryName }) => {
+const SearchBar = ({ filterArticleByCategoryName, searchOnElastic }) => {
+
+    const handelSearchChange = (e) => {
+        e.preventDefault();
+        console.log("......e....", e.target.value);
+        searchOnElastic(e.target.id.toString());
+    }
 
     const handelPrevent = (e) => {
+        console.log("......e....", e.target.value);
         e.preventDefault();
         filterArticleByCategoryName(e.target.id.toString())
         console.log(e.target.id.toString());
     }
+
     /*
         useEffect(() => {
             filterArticleByCategoryName()
@@ -21,8 +29,8 @@ const SearchBar = ({ filterArticleByCategoryName }) => {
         <div className="filter-section">
             <div className="container">
                 <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-success">Search</Button>
+                    <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={handelSearchChange} />
+                    <Button variant="outline-success" >Search</Button>
                 </Form>
                 <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-basic" >
